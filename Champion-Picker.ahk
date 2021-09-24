@@ -20,19 +20,13 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
 
     setWindowPos("League of Legends")
 
-    if (autoAccept){
-        waitAndClickIconWhenVisible("acceptIcon.png")
-        Sleep, defaultDelay
-    }
+    accept()
 
     searchForChampion()
 
     selectChamption()
 
-    if (autoLockIn){
-        waitAndClickIconWhenVisible("lockInActiveIcon.png")
-        Sleep, defaultDelay
-    }
+    lockIn()
 
     spamMessageInChat()
 return
@@ -53,6 +47,20 @@ Esc::
     MsgBox, Exiting script...
     ExitApp
 return
+
+accept(){
+    if (autoAccept){
+        waitAndClickIconWhenVisible("acceptIcon.png")
+        Sleep, defaultDelay
+    }
+}
+
+lockIn(){
+    if (autoLockIn){
+        waitAndClickIconWhenVisible("lockInActiveIcon.png")
+        Sleep, defaultDelay
+    }
+}
 
 presetIconsCoordinates(){
     global presetsXmlFileName
