@@ -28,3 +28,11 @@ clickOnIcon(iconName){
     else    
         MsgBox, Error2 clickOnIcon func
 }
+
+waitAndClickIconWhenVisible(iconName){
+    isVisible := 0
+    while (isVisible = 0){
+        isVisible := clickOnIcon(iconName)
+        Sleep, 10
+    }
+}
