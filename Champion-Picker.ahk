@@ -36,3 +36,15 @@ waitAndClickIconWhenVisible(iconName){
         Sleep, 10
     }
 }
+
+
+
+
+
+
+mouseShowCoordinates(x1, y1, x2, y2){
+    MouseMove, x1, y1
+    Sleep, 500
+    MouseMove, x2, y2
+    Sleep, 500
+}
