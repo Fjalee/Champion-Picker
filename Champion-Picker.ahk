@@ -7,10 +7,14 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 winStartX := 0, winStartY := 0, winEndX := 0, winEndY := 0
 defaultDelay := 50
 champName := "", chatText := ""
-autoAccept := 1, autoLockIn := 1
+autoAccept := 1, autoLockIn := 1, usePresetCoordinates := 1
+presetsXmlFileName := "coordinates.xml"
+presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
 
 \::
-    MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn
+    presetIconsCoordinates()
+
+    MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn`n%usePresetCoordinates% -usePresetCoordinates
     InputBox, champName, Champion name, , , 200, 100
     InputBox, chatText, Chat text, , , 200, 100
 
@@ -23,8 +27,7 @@ autoAccept := 1, autoLockIn := 1
 
     searchForChampion()
 
-    waitAndClickIconWhenVisible("champIcon.png")
-    Sleep, defaultDelay
+    selectChamption()
 
     if (autoLockIn){
         waitAndClickIconWhenVisible("lockInActiveIcon.png")
@@ -42,16 +45,57 @@ return
     global autoLockIn := 0
 return
 
+'::
+    global usePresetCoordinates := 0
+return
+
 Esc::
     MsgBox, Exiting script...
     ExitApp
 return
 
+presetIconsCoordinates(){
+    global presetsXmlFileName
+    FileRead, xml, %presetsXmlFileName%
+
+    doc := ComObjCreate("MSXML2.DOMDocument.6.0")
+    doc.async := false
+    doc.loadXML(xml)
+    
+    DocNode := doc.selectSingleNode("//Coordinates/SearchBarIcon")
+    global presetSearchBarX := DocNode.getAttribute("x")
+    global presetSearchBarY := DocNode.getAttribute("y")
+
+    DocNode := doc.selectSingleNode("//Coordinates/ChampIcon")
+    global presetChampIconX := DocNode.getAttribute("x")
+    global presetChampIconY := DocNode.getAttribute("y")
+}
+
 searchForChampion(){
-    global champName
-    waitAndClickIconWhenVisible("searchBarIcon.png")
+    global champName, usePresetCoordinates, presetSearchBarX, presetSearchBarY
+
+    if (usePresetCoordinates){
+        MouseClick, ,presetSearchBarX, presetSearchBarY
+    }
+    else{
+        waitAndClickIconWhenVisible("searchBarIcon.png")
+    }
+
     Sleep, defaultDelay
     Send, %champName%
+}
+
+selectChamption(){
+    global champName, usePresetCoordinates, presetChampIconX, presetChampIconY
+
+    if (usePresetCoordinates){
+        MouseClick, ,presetChampIconX, presetChampIconY
+    }
+    else{    
+        waitAndClickIconWhenVisible("champIcon.png")
+    }
+
+    Sleep, defaultDelay
 }
 
 spamMessageInChat(){
