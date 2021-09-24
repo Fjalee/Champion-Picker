@@ -13,6 +13,9 @@ champName := ""
 
     setWindowPos("League of Legends")
 
+    waitAndClickIconWhenVisible("acceptIcon.png")
+    Sleep, defaultDelay
+
     waitAndClickIconWhenVisible("searchBarIcon.png")
     Sleep, defaultDelay
     Send, %champName%
