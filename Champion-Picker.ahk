@@ -20,6 +20,9 @@ champName := ""
     waitAndClickIconWhenVisible("champIcon.png")
     Sleep, defaultDelay
 
+    waitAndClickIconWhenVisible("lockInActiveIcon.png")
+    Sleep, defaultDelay
+
 return
 
 Esc::
