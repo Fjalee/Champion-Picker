@@ -8,6 +8,7 @@ winStartX := 0, winStartY := 0, winEndX := 0, winEndY := 0
 
 .::
     setWindowPos("League of Legends")
+    waitAndClickIconWhenVisible("searchBarIcon.png")
 return
 
 setWindowPos(winName){
@@ -17,6 +18,7 @@ setWindowPos(winName){
 }
 
 clickOnIcon(iconName){
+    global winStartX, winStartY, winEndX, winEndY
     ImageSearch, OutputVarX, OutputVarY, winStartX, winStartY, winEndX, winEndY, *10 %iconName%
     if (ErrorLevel = 0){
         MouseClick , , OutputVarX, OutputVarY
