@@ -11,6 +11,11 @@ winStartX := 0, winStartY := 0, winEndX := 0, winEndY := 0
     waitAndClickIconWhenVisible("searchBarIcon.png")
 return
 
+Esc::
+    MsgBox, Exiting script...
+    ExitApp
+return
+
 setWindowPos(winName){
     WinGetPos, X, Y, widht, height, %winName%
     global winEndX := widht
