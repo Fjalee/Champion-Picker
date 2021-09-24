@@ -15,3 +15,16 @@ setWindowPos(winName){
     global winEndX := widht
     global winEndY := height
 }
+
+clickOnIcon(iconName){
+    ImageSearch, OutputVarX, OutputVarY, winStartX, winStartY, winEndX, winEndY, *10 %iconName%
+    if (ErrorLevel = 0){
+        MouseClick , , OutputVarX, OutputVarY
+        return 1
+    }
+    else if (ErrorLevel = 1){
+        return 0
+    }
+    else    
+        MsgBox, Error2 clickOnIcon func
+}
