@@ -17,7 +17,8 @@ champName := ""
     Sleep, defaultDelay
     Send, %champName%
 
-    
+    waitAndClickIconWhenVisible("champIcon.png")
+    Sleep, defaultDelay
 
 return
 
