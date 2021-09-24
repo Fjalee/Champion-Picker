@@ -3,18 +3,18 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-
 winStartX := 0, winStartY := 0, winEndX := 0, winEndY := 0
 defaultDelay := 50
 champName := "", chatText := ""
-autoAccept := 1, autoLockIn := 1, usePresetCoordinates := 1
+autoAccept := 1, autoLockIn := 1, usePresetCoordinates := 0
 presetsXmlFileName := "coordinates.xml"
 presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
 
 \::
     presetIconsCoordinates()
 
-    MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn`n%usePresetCoordinates% -usePresetCoordinates
+    MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn`n
+    ;%usePresetCoordinates% -usePresetCoordinates
     InputBox, champName, Champion name, , , 200, 100
     InputBox, chatText, Chat text, , , 200, 100
 
@@ -39,9 +39,10 @@ return
     global autoLockIn := 0
 return
 
-'::
-    global usePresetCoordinates := 0
-return
+;'::
+;    MsgBox, Feature is not implemented yet
+;    ;global usePresetCoordinates := 0
+;return
 
 Esc::
     MsgBox, Exiting script...
@@ -83,6 +84,7 @@ searchForChampion(){
     global champName, usePresetCoordinates, presetSearchBarX, presetSearchBarY
 
     if (usePresetCoordinates){
+        ;needs to wait until it can click it
         MouseClick, ,presetSearchBarX, presetSearchBarY
     }
     else{
@@ -97,6 +99,7 @@ selectChamption(){
     global champName, usePresetCoordinates, presetChampIconX, presetChampIconY
 
     if (usePresetCoordinates){
+        ;needs to wait until it can click it
         MouseClick, ,presetChampIconX, presetChampIconY
     }
     else{    
