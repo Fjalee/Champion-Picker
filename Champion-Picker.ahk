@@ -5,10 +5,20 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 
 winStartX := 0, winStartY := 0, winEndX := 0, winEndY := 0
+defaultDelay := 50
+champName := ""
 
 .::
+    InputBox, champName, Champion name, , , 200, 100
+
     setWindowPos("League of Legends")
+
     waitAndClickIconWhenVisible("searchBarIcon.png")
+    Sleep, defaultDelay
+    Send, %champName%
+
+    
+
 return
 
 Esc::
