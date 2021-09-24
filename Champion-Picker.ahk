@@ -9,7 +9,7 @@ defaultDelay := 50
 champName := "", chatText := ""
 autoAccept := 1, autoLockIn := 1
 
-.::
+\::
     MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn
     InputBox, champName, Champion name, , , 200, 100
     InputBox, chatText, Chat text, , , 200, 100
