@@ -6,10 +6,11 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 winStartX := 0, winStartY := 0, winEndX := 0, winEndY := 0
 defaultDelay := 50
-champName := ""
+champName := "", chatText := ""
 
 .::
     InputBox, champName, Champion name, , , 200, 100
+    InputBox, chatText, Chat text, , , 200, 100
 
     setWindowPos("League of Legends")
 
@@ -26,12 +27,25 @@ champName := ""
     waitAndClickIconWhenVisible("lockInActiveIcon.png")
     Sleep, defaultDelay
 
+    spamMessageInChat()
 return
 
 Esc::
     MsgBox, Exiting script...
     ExitApp
 return
+
+spamMessageInChat(){
+    global chatText
+    waitAndClickIconWhenVisible("chatBarIcon.png")
+    Sleep, defaultDelay
+    Loop 10{
+        SendInput, %chatText% 
+        Sleep, 10
+        SendInput, {Enter}
+        Sleep, 50
+    }
+}
 
 setWindowPos(winName){
     WinGetPos, X, Y, widht, height, %winName%
