@@ -17,9 +17,7 @@ champName := "", chatText := ""
     waitAndClickIconWhenVisible("acceptIcon.png")
     Sleep, defaultDelay
 
-    waitAndClickIconWhenVisible("searchBarIcon.png")
-    Sleep, defaultDelay
-    Send, %champName%
+    searchForChampion()
 
     waitAndClickIconWhenVisible("champIcon.png")
     Sleep, defaultDelay
@@ -34,6 +32,13 @@ Esc::
     MsgBox, Exiting script...
     ExitApp
 return
+
+searchForChampion(){
+    global champName
+    waitAndClickIconWhenVisible("searchBarIcon.png")
+    Sleep, defaultDelay
+    Send, %champName%
+}
 
 spamMessageInChat(){
     global chatText
