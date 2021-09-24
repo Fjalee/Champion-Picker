@@ -7,25 +7,39 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 winStartX := 0, winStartY := 0, winEndX := 0, winEndY := 0
 defaultDelay := 50
 champName := "", chatText := ""
+autoAccept := 1, autoLockIn := 1
 
 .::
+    MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn
     InputBox, champName, Champion name, , , 200, 100
     InputBox, chatText, Chat text, , , 200, 100
 
     setWindowPos("League of Legends")
 
-    waitAndClickIconWhenVisible("acceptIcon.png")
-    Sleep, defaultDelay
+    if (autoAccept){
+        waitAndClickIconWhenVisible("acceptIcon.png")
+        Sleep, defaultDelay
+    }
 
     searchForChampion()
 
     waitAndClickIconWhenVisible("champIcon.png")
     Sleep, defaultDelay
 
-    waitAndClickIconWhenVisible("lockInActiveIcon.png")
-    Sleep, defaultDelay
+    if (autoLockIn){
+        waitAndClickIconWhenVisible("lockInActiveIcon.png")
+        Sleep, defaultDelay
+    }
 
     spamMessageInChat()
+return
+
+[::
+    global autoAccept := 0
+return
+
+]::
+    global autoLockIn := 0
 return
 
 Esc::
