@@ -11,7 +11,7 @@ presetsXmlFileName := "coordinates.xml"
 presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
 
 \::
-    presetIconsCoordinates()
+    ; presetIconsCoordinates()
 
     MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn`n
     ;%usePresetCoordinates% -usePresetCoordinates
