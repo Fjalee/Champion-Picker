@@ -5,26 +5,27 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 winStartX := 0, winStartY := 0, winEndX := 2000, winEndY := 2000
 defaultDelay := 50
-champName := "", chatText := ""
+champName := "", chatText := "", banChampName := ""
 autoAccept := 1, autoLockIn := 1, usePresetCoordinates := 0
 presetsXmlFileName := "coordinates.xml"
 presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
 
 `::
-    MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn`n
-    InputBox, champName, Champion name, , , 200, 100
+    ; MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn`n
+    ; InputBox, champName, Champion name, , , 200, 100
+    InputBox, banChampName, Ban Champion name, , , 200, 100
 
-    accept()
+    ; accept()
 
     banChamp()
 
-    waitForPickTurn()
+    ; waitForPickTurn()
 
-    searchForChampion()
+    ; searchForChampion()
 
-    selectChampion()
+    ; selectChampion()
 
-    lockIn()
+    ; lockIn()
 return
 
 \::
@@ -78,6 +79,13 @@ accept(){
 lockIn(){
     if (autoLockIn){
         waitAndClickIconWhenVisible("lockInActiveIcon.png")
+        Sleep, defaultDelay
+    }
+}
+
+clickBan(){
+    if (ban){
+        waitAndClickIconWhenVisible("banButton.png")
         Sleep, defaultDelay
     }
 }
@@ -168,7 +176,12 @@ waitAndClickIconWhenVisible(iconName){
     }
 }
 
-
+banChamp(){
+    waitAndClickIconWhenVisible("banChampionBanner.png")
+    searchForChampion(banChampName)
+    selectChampion()
+    clickBan()
+}
 
 
 
