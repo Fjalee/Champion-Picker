@@ -40,7 +40,7 @@ return
 
     accept()
 
-    searchForChampion(selectChampName)
+    searchForChampion(selectChampName, false)
 
     selectChampion(selectChampName)
 
@@ -107,7 +107,8 @@ presetIconsCoordinates(){
     global presetChampIconY := DocNode.getAttribute("y")
 }
 
-searchForChampion(champName){
+searchForChampion(champName, isBanScreen){
+    , 
     global usePresetCoordinates, presetSearchBarX, presetSearchBarY
 
     if (usePresetCoordinates){
@@ -115,7 +116,12 @@ searchForChampion(champName){
         MouseClick, ,presetSearchBarX, presetSearchBarY
     }
     else{
-        waitAndClickIconWhenVisible("searchBarIcon.png")
+        if(isBanScreen){
+            waitAndClickIconWhenVisible(searchBarIcon, "searchBarIcon-banScreen.png")
+        }
+        else{
+            waitAndClickIconWhenVisible(searchBarIcon, "searchBarIcon.png")
+        }
     }
 
     Sleep, defaultDelay
@@ -178,7 +184,7 @@ waitAndClickIconWhenVisible(iconName){
 
 banChamp(champName){
     waitAndClickIconWhenVisible("banChampionBanner.png")
-    searchForChampion(champName)
+    searchForChampion(champName, true)
     selectChampion(champName)
     clickBan()
 }
