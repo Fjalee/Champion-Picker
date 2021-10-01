@@ -3,12 +3,29 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-winStartX := 0, winStartY := 0, winEndX := 0, winEndY := 0
+winStartX := 0, winStartY := 0, winEndX := 2000, winEndY := 2000
 defaultDelay := 50
 champName := "", chatText := ""
 autoAccept := 1, autoLockIn := 1, usePresetCoordinates := 0
 presetsXmlFileName := "coordinates.xml"
 presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
+
+`::
+    MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn`n
+    InputBox, champName, Champion name, , , 200, 100
+
+    accept()
+
+    banChamp()
+
+    waitForPickTurn()
+
+    searchForChampion()
+
+    selectChamption()
+
+    lockIn()
+return
 
 \::
     ; presetIconsCoordinates()
@@ -18,7 +35,7 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
     InputBox, champName, Champion name, , , 200, 100
     InputBox, chatText, Chat text, , , 200, 100
 
-    setWindowPos("League of Legends")
+    ; setWindowPos("League of Legends")
 
     accept()
 
@@ -30,6 +47,8 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
 
     spamMessageInChat()
 return
+
+
 
 [::
     global autoAccept := 0
