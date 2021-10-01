@@ -11,7 +11,7 @@ presetsXmlFileName := "coordinates.xml"
 presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
 
 `::
-    ; MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n
+    MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n%isAutoBanOn% -isAutoBanOn`n
     InputBox, champName, Champion name, , , 200, 100
     InputBox, banChampName, Ban Champion name, , , 200, 100
 
