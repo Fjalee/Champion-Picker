@@ -6,12 +6,12 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 winStartX := 0, winStartY := 0, winEndX := 2000, winEndY := 2000
 defaultDelay := 50
 champName := "", chatText := "", banChampName := ""
-autoAccept := 1, autoLockIn := 1, isAutoBanOn := 1, usePresetCoordinates := 0
+isAutoAcceptOn := 1, isAutoLockInOn := 1, isAutoBanOn := 1, usePresetCoordinates := 0
 presetsXmlFileName := "coordinates.xml"
 presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
 
 `::
-    ; MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn`n
+    ; MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n
     InputBox, champName, Champion name, , , 200, 100
     InputBox, banChampName, Ban Champion name, , , 200, 100
 
@@ -31,7 +31,7 @@ return
 \::
     ; presetIconsCoordinates()
 
-    MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn`n
+    MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n
     ;%usePresetCoordinates% -usePresetCoordinates
     InputBox, champName, Champion name, , , 200, 100
     InputBox, chatText, Chat text, , , 200, 100
@@ -52,11 +52,11 @@ return
 
 
 [::
-    global autoAccept := 0
+    global isAutoAcceptOn := 0
 return
 
 ]::
-    global autoLockIn := 0
+    global isAutoLockInOn := 0
 return
 
 '::
@@ -69,14 +69,14 @@ Esc::
 return
 
 accept(){
-    if (autoAccept){
+    if (isAutoAcceptOn){
         waitAndClickIconWhenVisible("acceptIcon.png")
         Sleep, defaultDelay
     }
 }
 
 lockIn(){
-    if (autoLockIn){
+    if (isAutoLockInOn){
         waitAndClickIconWhenVisible("lockInActiveIcon.png")
         Sleep, defaultDelay
     }
