@@ -6,7 +6,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 winStartX := 0, winStartY := 0, winEndX := 2000, winEndY := 2000
 defaultDelay := 50
 selectChampName := "", chatText := "", banChampName := ""
-isAutoAcceptOn := 1, isAutoLockInOn := 1, isAutoBanOn := 1, usePresetCoordinates := 0
+isAutoAcceptOn := 1, isAutoLockInOn := 1, isAutoBanOn := 1
 presetsXmlFileName := "coordinates.xml"
 presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
 
@@ -29,10 +29,7 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
 return
 
 \::
-    ; presetIconsCoordinates()
-
     MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n
-    ;%usePresetCoordinates% -usePresetCoordinates
     InputBox, selectChampName, Champion name, , , 200, 100
     InputBox, chatText, Chat text, , , 200, 100
 
@@ -108,19 +105,13 @@ presetIconsCoordinates(){
 }
 
 searchForChampion(champName, isBanScreen){
-    global usePresetCoordinates, presetSearchBarX, presetSearchBarY
+    global presetSearchBarX, presetSearchBarY
 
-    if (usePresetCoordinates){
-        ;needs to wait until it can click it
-        MouseClick, ,presetSearchBarX, presetSearchBarY
+    if(isBanScreen){
+        waitAndClickIconWhenVisible("searchBarIcon-banScreen.png")
     }
     else{
-        if(isBanScreen){
-            waitAndClickIconWhenVisible("searchBarIcon-banScreen.png")
-        }
-        else{
-            waitAndClickIconWhenVisible("searchBarIcon.png")
-        }
+        waitAndClickIconWhenVisible("searchBarIcon.png")
     }
 
     Sleep, defaultDelay
@@ -128,17 +119,11 @@ searchForChampion(champName, isBanScreen){
 }
 
 selectChampion(champName){
-    global usePresetCoordinates, presetChampIconX, presetChampIconY
+    global presetChampIconX, presetChampIconY
 
     iconName = %champName%.png
 
-    if (usePresetCoordinates){
-        ;needs to wait until it can click it
-        MouseClick, ,presetChampIconX, presetChampIconY
-    }
-    else{    
-        waitAndClickIconWhenVisible(iconName)
-    }
+    waitAndClickIconWhenVisible(iconName)
 
     Sleep, defaultDelay
 }
