@@ -6,7 +6,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 winStartX := 0, winStartY := 0, winEndX := 2000, winEndY := 2000
 defaultDelay := 50
 champName := "", chatText := "", banChampName := ""
-autoAccept := 1, autoLockIn := 1, usePresetCoordinates := 0
+autoAccept := 1, autoLockIn := 1, isAutoBanOn := 1, usePresetCoordinates := 0
 presetsXmlFileName := "coordinates.xml"
 presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
 
@@ -59,10 +59,9 @@ return
     global autoLockIn := 0
 return
 
-;'::
-;    MsgBox, Feature is not implemented yet
-;    ;global usePresetCoordinates := 0
-;return
+'::
+   global isAutoBanOn := 0
+return
 
 Esc::
     MsgBox, Exiting script...
@@ -84,7 +83,8 @@ lockIn(){
 }
 
 clickBan(){
-    if (ban){
+    global isAutoBanOn
+    if (isAutoBanOn){
         waitAndClickIconWhenVisible("banButton.png")
         Sleep, defaultDelay
     }
