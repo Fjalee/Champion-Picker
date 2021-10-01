@@ -40,7 +40,7 @@ return
 
     accept()
 
-    searchForChampion()
+    searchForChampion(selectChampName)
 
     selectChampion(selectChampName)
 
