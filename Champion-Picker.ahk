@@ -12,20 +12,20 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
 
 `::
     ; MsgBox, %autoAccept% -autoAccept`n%autoLockIn% -autoLockIn`n
-    ; InputBox, champName, Champion name, , , 200, 100
+    InputBox, champName, Champion name, , , 200, 100
     InputBox, banChampName, Ban Champion name, , , 200, 100
 
-    ; accept()
+    accept()
 
     banChamp(banChampName)
 
     waitForPickTurn()
 
-    ; searchForChampion()
+    searchForChampion(champName, false)
 
-    ; selectChampion()
+    selectChampion(champName)
 
-    ; lockIn()
+    lockIn()
 return
 
 \::
