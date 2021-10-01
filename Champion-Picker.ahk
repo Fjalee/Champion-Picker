@@ -17,7 +17,7 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
 
     ; accept()
 
-    banChamp()
+    banChamp(banChampName)
 
     ; waitForPickTurn()
 
@@ -176,10 +176,10 @@ waitAndClickIconWhenVisible(iconName){
     }
 }
 
-banChamp(){
+banChamp(champName){
     waitAndClickIconWhenVisible("banChampionBanner.png")
-    searchForChampion(banChampName)
-    selectChampion(banChampName)
+    searchForChampion(champName)
+    selectChampion(champName)
     clickBan()
 }
 
