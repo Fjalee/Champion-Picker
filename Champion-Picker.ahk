@@ -5,14 +5,14 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 winStartX := 0, winStartY := 0, winEndX := 2000, winEndY := 2000
 defaultDelay := 50
-champName := "", chatText := "", banChampName := ""
+selectChampName := "", chatText := "", banChampName := ""
 isAutoAcceptOn := 1, isAutoLockInOn := 1, isAutoBanOn := 1, usePresetCoordinates := 0
 presetsXmlFileName := "coordinates.xml"
 presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
 
 `::
-    MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n%isAutoBanOn% -isAutoBanOn`n
-    InputBox, champName, Champion name, , , 200, 100
+    MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n%isAutoBanOn% -isAutoLockInOn`n
+    InputBox, selectChampName, Champion name, , , 200, 100
     InputBox, banChampName, Ban Champion name, , , 200, 100
 
     accept()
@@ -21,9 +21,9 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
 
     waitForPickTurn()
 
-    searchForChampion(champName, false)
+    searchForChampion(selectChampName, false)
 
-    selectChampion(champName)
+    selectChampion(selectChampName)
 
     lockIn()
 return
@@ -33,7 +33,7 @@ return
 
     MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n
     ;%usePresetCoordinates% -usePresetCoordinates
-    InputBox, champName, Champion name, , , 200, 100
+    InputBox, selectChampName, Champion name, , , 200, 100
     InputBox, chatText, Chat text, , , 200, 100
 
     ; setWindowPos("League of Legends")
