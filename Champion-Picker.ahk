@@ -13,7 +13,7 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
 ;Draft picks
 `::
     MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n%isAutoBanOn% -isAutoLockInOn`n
-    InputBox, selectChampName, Champion name, , , 200, 100
+    InputBox, selectChampName, Pick Champion name, , , 200, 100
     InputBox, banChampName, Ban Champion name, , , 200, 100
 
     accept()
