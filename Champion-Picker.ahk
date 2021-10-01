@@ -130,12 +130,14 @@ searchForChampion(champName, isBanScreen){
 selectChampion(champName){
     global usePresetCoordinates, presetChampIconX, presetChampIconY
 
+    iconName = %champName%.png
+
     if (usePresetCoordinates){
         ;needs to wait until it can click it
         MouseClick, ,presetChampIconX, presetChampIconY
     }
     else{    
-        waitAndClickIconWhenVisible("champIcon.png")
+        waitAndClickIconWhenVisible(iconName)
     }
 
     Sleep, defaultDelay
