@@ -10,6 +10,7 @@ isAutoAcceptOn := 1, isAutoLockInOn := 1, isAutoBanOn := 1
 presetsXmlFileName := "coordinates.xml"
 presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChampIconY := 0
 
+;Draft picks
 `::
     MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n%isAutoBanOn% -isAutoLockInOn`n
     InputBox, selectChampName, Champion name, , , 200, 100
@@ -28,6 +29,7 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
     lockIn()
 return
 
+;Blind picks
 \::
     MsgBox, %isAutoAcceptOn% -isAutoAcceptOn`n%isAutoLockInOn% -isAutoLockInOn`n
     InputBox, selectChampName, Champion name, , , 200, 100
@@ -45,8 +47,6 @@ return
 
     spamMessageInChat()
 return
-
-
 
 [::
     global isAutoAcceptOn := 0
