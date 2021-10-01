@@ -107,8 +107,8 @@ presetIconsCoordinates(){
     global presetChampIconY := DocNode.getAttribute("y")
 }
 
-searchForChampion(){
-    global champName, usePresetCoordinates, presetSearchBarX, presetSearchBarY
+searchForChampion(champName){
+    global usePresetCoordinates, presetSearchBarX, presetSearchBarY
 
     if (usePresetCoordinates){
         ;needs to wait until it can click it
