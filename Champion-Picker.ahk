@@ -108,7 +108,6 @@ presetIconsCoordinates(){
 }
 
 searchForChampion(champName, isBanScreen){
-    , 
     global usePresetCoordinates, presetSearchBarX, presetSearchBarY
 
     if (usePresetCoordinates){
@@ -117,10 +116,10 @@ searchForChampion(champName, isBanScreen){
     }
     else{
         if(isBanScreen){
-            waitAndClickIconWhenVisible(searchBarIcon, "searchBarIcon-banScreen.png")
+            waitAndClickIconWhenVisible("searchBarIcon-banScreen.png")
         }
         else{
-            waitAndClickIconWhenVisible(searchBarIcon, "searchBarIcon.png")
+            waitAndClickIconWhenVisible("searchBarIcon.png")
         }
     }
 
