@@ -22,7 +22,7 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
 
     searchForChampion()
 
-    selectChamption()
+    selectChampion()
 
     lockIn()
 return
@@ -41,7 +41,7 @@ return
 
     searchForChampion()
 
-    selectChamption()
+    selectChampion()
 
     lockIn()
 
@@ -114,7 +114,7 @@ searchForChampion(){
     Send, %champName%
 }
 
-selectChamption(){
+selectChampion(){
     global champName, usePresetCoordinates, presetChampIconX, presetChampIconY
 
     if (usePresetCoordinates){
