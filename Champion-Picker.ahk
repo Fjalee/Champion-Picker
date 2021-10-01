@@ -42,7 +42,7 @@ return
 
     searchForChampion()
 
-    selectChampion()
+    selectChampion(selectChampName)
 
     lockIn()
 
@@ -122,8 +122,8 @@ searchForChampion(){
     Send, %champName%
 }
 
-selectChampion(){
-    global champName, usePresetCoordinates, presetChampIconX, presetChampIconY
+selectChampion(champName){
+    global usePresetCoordinates, presetChampIconX, presetChampIconY
 
     if (usePresetCoordinates){
         ;needs to wait until it can click it
@@ -179,7 +179,7 @@ waitAndClickIconWhenVisible(iconName){
 banChamp(){
     waitAndClickIconWhenVisible("banChampionBanner.png")
     searchForChampion(banChampName)
-    selectChampion()
+    selectChampion(banChampName)
     clickBan()
 }
 
