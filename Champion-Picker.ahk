@@ -19,7 +19,7 @@ presetSearchBarY := 0, presetSearchBarX := 0, presetChampIconX := 0, presetChamp
 
     banChamp(banChampName)
 
-    ; waitForPickTurn()
+    waitForPickTurn()
 
     ; searchForChampion()
 
@@ -190,7 +190,9 @@ banChamp(champName){
     clickBan()
 }
 
-
+waitForPickTurn(){
+    waitAndClickIconWhenVisible("chooseYourChampionBanner.png")
+}
 
 
 mouseShowCoordinates(x1, y1, x2, y2){
